@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3es53r4oi8ud"]
+
+[ext_resource type="Script" path="res://Tile.gd" id="1_3btjb"]
+
+[node name="Tile" type="StaticBody2D"]
+input_pickable = true
+script = ExtResource("1_3btjb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 100, 0, 0, 100)
