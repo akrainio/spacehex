@@ -1,13 +1,14 @@
 class_name Tile
 extends CollisionObject2D
 
-@onready var grid: Grid = $".."
+var grid: Grid
 var coordinates: Vector2i
 var hover: bool = false
 var drawer: TileDrawer
-	
-func init(coordinates_: Vector2i) -> void:
+
+func init(grid_: Grid, coordinates_: Vector2i) -> void:
 	coordinates = coordinates_
+	grid = grid_
 	drawer = TileDrawer.new(self)
 	self.add_child(drawer)
 	

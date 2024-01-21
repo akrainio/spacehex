@@ -13,11 +13,3 @@ func _input(event) -> void:
 	elif event is InputEventMouseMotion:
 		if mouse_down:
 			position -= event.relative
-
-		# Print the size of the viewport.
-		#print("Viewport Resolution is: ", get_viewport().get_visible_rect().size)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta) -> void:
-	pass

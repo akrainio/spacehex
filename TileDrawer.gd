@@ -9,14 +9,19 @@ const default_fill_color: Color = Color.BLACK
 const hover_fill_color: Color = Color.REBECCA_PURPLE
 const edge_color: Color = Color(1, 1, 1)
 const edge_width: float = 1.5
-const edge_len: int = 64
+var edge_len: int = 64
 
 # fill color of tile instance
 var fill_color: Color = default_fill_color
 
 # math helpers
-const a: float = 0.5 * edge_len
-const b: float = edge_len * sqrt(3)/2
+var a: float:
+	get:
+		return 0.5 * edge_len
+
+var b: float:
+	get:
+		return edge_len * sqrt(3)/2
 
 var _center: Vector2:
 	get:
@@ -81,3 +86,11 @@ func set_hover_color() -> void:
 func reset_color() -> void:
 	fill_color = default_fill_color
 	queue_redraw()
+
+func _input(event):
+	if event.is_action("Zoom In"):
+		print("zooming in")
+		edge_len -= 16
+	elif event.is_action_pressed("Zoom Out"):
+		print("zooming out")
+		edge_len += 16

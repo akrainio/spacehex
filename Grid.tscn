@@ -5,6 +5,8 @@
 
 [node name="Grid" type="Node2D"]
 script = ExtResource("1_h28sx")
+width = 128
+height = 80
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("2_e5yeo")
