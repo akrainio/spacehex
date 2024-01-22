@@ -71,7 +71,16 @@ func draw_hex() -> void:
 		edge_width, true)
 
 func _draw() -> void:
-	draw_hex()
+	var vis_top_left: Vector2 = $"../..".vis_top_left
+	var vis_top_right: Vector2 = $"../..".vis_top_right
+	var vis_bottom_left: Vector2 = $"../..".vis_bottom_left
+	var vis_bottom_right: Vector2 = $"../..".vis_bottom_right
+	var vis_left: float = vis_bottom_left.x
+	var vis_right: float = vis_bottom_right.x
+	var vis_top: float = vis_bottom_left.y
+	var vis_bottom: float = vis_top_left.y
+	if _right.x > vis_left and _left.x < vis_right and _top_right.y < vis_bottom and _bottom_right.y > vis_top:
+		draw_hex()
 
 func _get_coordinates() -> Vector2i:
 	return $"..".coordinates
@@ -88,9 +97,23 @@ func reset_color() -> void:
 	queue_redraw()
 
 func _input(event):
-	if event.is_action("Zoom In"):
+	if event.is_action_pressed("Zoom In"):
 		print("zooming in")
 		edge_len -= 16
+		queue_redraw()
 	elif event.is_action_pressed("Zoom Out"):
 		print("zooming out")
 		edge_len += 16
+		queue_redraw()
+
+#func draw_visible() -> void:
+	#var vis_top_left: Vector2 = $"../..".vis_top_left
+	#var vis_top_right: Vector2 = $"../..".vis_top_right
+	#var vis_bottom_left: Vector2 = $"../..".vis_bottom_left
+	#var vis_bottom_right: Vector2 = $"../..".vis_bottom_right
+	#var vis_left: float = vis_bottom_left.x
+	#var vis_right: float = vis_bottom_right.x
+	#var vis_top: float = vis_bottom_left.y
+	#var vis_bottom: float = vis_top_left.y
+	#if _right.x > vis_left and _left.x < vis_right and _top_right.y < vis_bottom and _bottom_right.y > vis_top:
+		##queue_redraw()
